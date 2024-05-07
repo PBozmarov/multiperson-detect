@@ -21,3 +21,6 @@ After executing this command, your new environment should be set up and ready to
 
 
 # Usage
+
+# References
+* https://github.com/minivision-ai/Silent-Face-Anti-Spoofing/blob/master/README_EN.md
