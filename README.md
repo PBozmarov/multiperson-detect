@@ -1,3 +1,8 @@
+# Problem
+This project provides an end-to-end solution to ensure people are verifying their identities online of their own free will, not under pressure from others. We're developing tools to detect when more than one person might be involved in the verification process, keeping online identity checks safe and truly voluntary.
+
+
+
 # multiperson-detect
 Model that returns 1 if the video contains more than one person at any given moment, 0 otherwise.
 
@@ -13,3 +18,6 @@ To set up your environment, follow these steps:
    Replace `<myenv>` with your desired environment name.
 
 After executing this command, your new environment should be set up and ready to use.
+
+
+# Usage
