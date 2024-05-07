@@ -1,7 +1,14 @@
 # Problem
 This project provides an end-to-end solution to ensure people are verifying their identities online of their own free will, not under pressure from others. We're developing tools to detect when more than one person might be involved in the verification process, keeping online identity checks safe and truly voluntary.
 
-![forced_verification](https://github.com/PBozmarov/multiperson-detect/assets/77898273/2394b98e-1dc6-46ac-ab33-d3b3e9f81b89){ width=300px height=50px }
+<img src="https://github.com/PBozmarov/multiperson-detect/assets/77898273/2394b98e-1dc6-46ac-ab33-d3b3e9f81b89" width="500" height="500" alt="forced_verification">
+
+
+When verifying people usually hold IDs, however traditional pre-trained models such as yolov8n.pt don't differentiate between an ID of a person or a real person, thus we needed to make sure our framework recognises both real and fake people.
+
+<img src="https://github.com/PBozmarov/multiperson-detect/assets/77898273/599a548e-5cf6-4539-a338-85ecf6ca0f22" width="400" height="400" alt="real_fake">
+
+
 
 # Solution
 End-to-end model that returns 1 if the video contains more than one person at any given moment, 0 otherwise.
