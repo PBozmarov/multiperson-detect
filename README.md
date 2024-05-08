@@ -16,7 +16,7 @@ We use two approaches:
 1) We fine-tune our custom private dataset Yolov8 Nano model, pre-trained on the COCO dataset. The model takes as input a frame/image and outputs bounding boxes for a **real person** a person appearing on the image, and a **fake person** - an image of a person, such as an ID of a person. Then we wrap the model into a framework that tracks the number of real people per frame.
 2) We use the Yolov8 Nano model, and we only detect the class **person**, after detection, we extract the ROI(region of interest) within the predicted bounding boxes and use the Silent-Face-Anti-Spoofing detector (referenced below) to detect whether a person is a real or fake. 
 
-# Set Up
+# Installation
 To set up your environment, follow these steps:
 
 1. Open your terminal.
@@ -30,7 +30,25 @@ To set up your environment, follow these steps:
 After executing this command, your new environment should be set up and ready to use.
 
 
-# Usage
+# Example Usage
+
+**Label a single video:**
+
+    python main.py --mode single --video_path your_video_path
+
+**Label videos from a folder:**
+
+    python main.py --mode folder --video_path your_folder_path
+
+| Argument | Values | Description | Default |
+|---|---|---|---|
+| mode | single, folder | single - video, folder - folder of videos. | single |
+| model_type | tuned, pre_trained | tuned - yolov8n.pt tuned on custom dataset, pre_trained - yolov8n pre-trained on the COCO dataset | tuned |
+| video_path | absolute/relative path to the video or the folder |  | None |
+| skip_frames | positive int: 1,2,3,4,..  | defines how many frames we will skip when processing the video, 1 means we skip every other frame, 2 means we skip every 2 frames, and so on. | 1 |
+| verbose | bool | shows additional logs | False |
+| show_video | bool | shows the video and the predicted bounding boxes | False |
+
 
 # References
 * https://github.com/minivision-ai/Silent-Face-Anti-Spoofing/blob/master/README_EN.md
