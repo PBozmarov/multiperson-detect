@@ -30,7 +30,7 @@ To set up your environment, follow these steps:
 After executing this command, your new environment should be set up and ready to use.
 
 
-# Example Usage
+# Usage
 
 **Label a single video:**
 
