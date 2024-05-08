@@ -50,7 +50,7 @@ After executing this command, your new environment should be set up and ready to
 | mode | single, folder | single - video, folder - folder of videos. | single |
 | model_type | tuned, pre_trained | tuned - yolov8n.pt tuned on custom dataset, pre_trained - yolov8n pre-trained on the COCO dataset | tuned |
 | video_path | absolute/relative path to the video or the folder |  | None |
-| skip_frames | positive int: 1,2,3,4,..  | defines how many frames we will skip when processing the video, 1 means we skip every other frame, 2 means we skip every 2 frames, and so on. | 1 |
+| skip_frames | positive int: 1, 2, 3, 4,..  | defines how many frames we will skip when processing the video, 1 means we skip every other frame, 2 means we skip every 2 frames, and so on. | 1 |
 | verbose | bool | shows additional logs | False |
 | show_video | bool | shows the video and the predicted bounding boxes | False |
 
