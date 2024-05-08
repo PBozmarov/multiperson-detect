@@ -36,6 +36,7 @@ After executing this command, your new environment should be set up and ready to
 
 
 # Usage
+Note! The first time you run the script it can take up to 2-3 mins for the _ultralytics_ module to initialise. 
 
 **Label a single video:**
 
