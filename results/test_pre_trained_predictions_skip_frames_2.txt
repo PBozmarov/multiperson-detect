@@ -1,0 +1,20 @@
+Prediction     Label
+0             veriff1
+1             veriff2
+0             veriff3
+1             veriff4
+0             veriff5
+0             veriff6
+0             veriff7
+0             veriff8
+1             veriff9
+1             veriff10
+0             veriff11
+1             veriff12
+0             veriff14
+1             veriff16
+0             veriff17
+0             veriff18
+1             veriff19
+
+total_time: 12:21

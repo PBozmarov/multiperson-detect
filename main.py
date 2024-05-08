@@ -16,6 +16,23 @@ sys.path.append(repo_path)
 from spoof_test import test as spoof_test
 
 
+import numpy as np
+from tqdm import tqdm
+import natsort
+import argparse
+import sys
+import os
+from ultralytics import YOLO
+import cv2
+from time import time
+
+# Path to the folder containing test.py of our anti-spoof repository
+repo_path = os.path.abspath("./anti_spoof")
+sys.path.append(repo_path)
+
+from spoof_test import test as spoof_test
+
+
 def test_tuned(
     video_path: str,
     skip_frames: int = 1,
@@ -37,13 +54,20 @@ def test_tuned(
         start = time()
 
     # Load the fine-tuned Yolo V8 model
-    model_path = "trained_models/yolov8_n_pt_epochs_100_sz_640/weights/best.pt"
+    model_path = "models/yolov8_n_pt_epochs_100_sz_640/weights/best.pt"
     model = YOLO(model_path)    
 
     if verbose:
         print(model.names)
 
     video_capture = cv2.VideoCapture(video_path)
+
+    # Get the total number of frames in the video, taking into account the frames skipped
+    total_frames = int(video_capture.get(cv2.CAP_PROP_FRAME_COUNT) / (skip_frames + 1))
+
+
+    # Initialize tqdm progress bar and set leave to False
+    pbar = tqdm(total=total_frames, desc="Processing Video", leave=False)
 
     # get the frames per second
     fps = video_capture.get(cv2.CAP_PROP_FPS)
@@ -116,8 +140,15 @@ def test_tuned(
             else:
                 num_cons_frames_more_than_1_person = 0
 
+            # update the progress bar
+            pbar.update(1)
+
             # if the count of consecutive frames with more than 1 person is greater than the target, return 1
             if num_cons_frames_more_than_1_person >= target_consecutive_frames:
+
+                # progress bar fully loaded
+                pbar.n = total_frames
+                pbar.last_print_n = total_frames
 
                 if show_video:
                     text = "Two or more people detected!"
@@ -150,6 +181,9 @@ def test_tuned(
     else:
 
         # if no frame has two or more people, return 0
+        # progress bar fully loaded
+        pbar.n = total_frames
+        pbar.last_print_n = total_frames
         return 0
 
     if show_video:
@@ -183,11 +217,19 @@ def test_pre_trained(
         start = time()
 
     # Load Yolo V8 pre-trained model
-    model = YOLO("yolov8n.pt")
+    model_path = "models/yolov8n.pt"
+    model = YOLO(model_path)
     if verbose:
         print(model.names)
 
     video_capture = cv2.VideoCapture(video_path)
+
+    # Get the total number of frames in the video, taking into account the frames skipped
+    total_frames = int(video_capture.get(cv2.CAP_PROP_FRAME_COUNT) / (skip_frames + 1))
+
+
+    # Initialize tqdm progress bar and set leave to False
+    pbar = tqdm(total=total_frames, desc="Processing Video", leave=False)
 
     # get the frames per second
     fps = video_capture.get(cv2.CAP_PROP_FPS)
@@ -266,8 +308,15 @@ def test_pre_trained(
                 num_cons_frames_more_than_1_person += 1
             else:
                 num_cons_frames_more_than_1_person = 0
+            
+            # update the progress bar
+            pbar.update(1)
 
             if num_cons_frames_more_than_1_person >= target_consecutive_frames:
+
+                # progress bar fully loaded
+                pbar.n = total_frames
+                pbar.last_print_n = total_frames
 
                 if show_video:
                     text = "Two or more people detected!"
@@ -299,6 +348,11 @@ def test_pre_trained(
         frame_counter += 1
 
     else:
+
+        # if no frame has two or more people, return 0
+        # progress bar fully loaded
+        pbar.n = total_frames
+        pbar.last_print_n = total_frames
         return 0
 
     if show_video:
