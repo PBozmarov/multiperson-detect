@@ -17,15 +17,20 @@ We use two approaches:
 2) We use the Yolov8 Nano model, and we only detect the class **person**, after detection, we extract the ROI(region of interest) within the predicted bounding boxes and use the Silent-Face-Anti-Spoofing detector (referenced below) to detect whether a person is a real or fake. 
 
 # Installation
-To set up your environment, follow these steps:
+Clone and enter the repository:
+
+      git clone https://github.com/PBozmarov/multiperson-detect.git
+      cd multiperson-detect
+
+Set up the environment:
 
 1. Open your terminal.
-2. Ensure you are in the directory containing the `test_env.yaml` file.
-3. Run the following command to create a new conda environment named `<myenv>` using the configuration in `test_env.yaml`:
+2. Ensure you are in the directory containing the test_env.yaml file.
+3. Run the following command to create a new conda environment named <myenv> using the configuration in test_env.yaml:
 
-   **`conda env create -f test_env.yaml --name <myenv>`**
+       conda env create -f test_env.yaml --name <myenv>
 
-   Replace `<myenv>` with your desired environment name.
+   Replace <myenv> with your desired environment name.
 
 After executing this command, your new environment should be set up and ready to use.
 
