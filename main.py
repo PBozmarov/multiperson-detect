@@ -15,24 +15,6 @@ sys.path.append(repo_path)
 
 from spoof_test import test as spoof_test
 
-
-import numpy as np
-from tqdm import tqdm
-import natsort
-import argparse
-import sys
-import os
-from ultralytics import YOLO
-import cv2
-from time import time
-
-# Path to the folder containing test.py of our anti-spoof repository
-repo_path = os.path.abspath("./anti_spoof")
-sys.path.append(repo_path)
-
-from spoof_test import test as spoof_test
-
-
 def test_tuned(
     video_path: str,
     skip_frames: int = 1,
